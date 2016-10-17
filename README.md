@@ -11,7 +11,6 @@ General dotfiles for my server
 
 ```
 git clone git@bitbucket.org:Retraut/dotfiles.git ~/.dotfiles
-
 ```
 
 * Run **~/.dotfiles/dots install**
