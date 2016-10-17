@@ -10,7 +10,6 @@ General dotfiles for my server
 * Clone repo with 
 
 ```
-#!shell
 git clone git@bitbucket.org:Retraut/dotfiles.git ~/.dotfiles
 
 ```
