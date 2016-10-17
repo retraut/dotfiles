@@ -1,0 +1,36 @@
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:${HOME}/.dotfiles
+
+#alias for cd
+alias ..='cd ../'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+
+unsetopt correctall
+export EDITOR=/usr/bin/vim
+
+# for editing common configuration files
+alias ev='vim ~/.vimrc'
+alias ez='vim ~/.aliasesrc'
+alias et='vim ~/.tmux.conf'
+alias es='vim ~/.screenrc'
+
+#for git
+alias gcl='git clone'
+alias gs='git status'
+alias gco='git checkout'
+alias gp='git push'
+alias gpl='git pull'
+alias gc='git commit'
+alias gl='git log'
+alias glo='git log --pretty=oneline -n 10'
+alias ga='git add'
+alias gb='git branch'
+alias gf='git fetch'
+alias fixup='git commit --fixup'
+
+#for some commands
+alias h='history'
+alias upgrade='sudo apt-get update && sudo apt-get upgrade'
+alias wget='noglob wget'
+alias curl='noglob curl'
+

@@ -1,0 +1,50 @@
+#!/bin/bash
+
+GIT="${HOME}/.dotfiles"
+CONF="${HOME}"
+FILES=(
+ ".aliasesrc"
+ ".vimrc"
+ ".zshrc"
+ ".ssh"
+ ".vim"
+ ".oh-my-zsh"
+ ".screenrc"
+)
+
+function install {
+for i in "${FILES[@]}"; do
+    rm -rf ${HOME}/$i
+    if ln -s $GIT/files/$i ${HOME}/$i ; then
+      echo Link to ${HOME}/$i created!; else     
+        echo 0; fi
+done
+}
+
+function gitsubmodule {
+cd ~/.dotfiles
+git submodule init
+git submodule update
+}
+
+# Need to do in ansible module for centos and ubuntu ( debian ) servers
+function needed_package {
+sudo apt-get install python-pip zsh vim git curl wget  
+}
+
+
+function update {
+git -C $GIT add .
+git -C $GIT commit
+git -C $GIT push
+}
+
+
+if [ $1 == update ] ||[ $1 == "-u" ]; then
+    update
+    exit 0
+elif [ $1 == install ] || [ $1 == "-i" ]; then
+    install
+    gitsubmodule
+    needed_package
+fi

@@ -1,0 +1,11 @@
+startup_message off
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{= Kb} %{= Kb} %{-} %-Lw%{= bW}%n%f %t%{-}%+Lw "
+defscrollback 100000
+# for ctrl right and left arrows
+# Arrow keys to switch terminals (only works with X) 
+# Alt + left 
+# bindkey ^[[1;3D prev 
+# Alt + right 
+# bindkey ^[[1;3C next 
