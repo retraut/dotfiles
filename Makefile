@@ -1,5 +1,5 @@
 DOTFILES := ${HOME}/.dotfiles/files
-FILES    := .aliasesrc .vimrc .zshrc .ssh .vim .oh-my-zsh .screenrc
+FILES    := .aliasesrc .vimrc .zshrc .ssh .vim .oh-my-zsh .screenrc .gitconfig
 
 server:: basic
 chromebook:: basic
