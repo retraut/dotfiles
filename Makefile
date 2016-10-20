@@ -1,5 +1,5 @@
-DOTFILES = ${HOME}/.dotfiles
-FILES = .aliasesrc .vimrc .zshrc .ssh .vim .oh-my-zsh .screenrc
+DOTFILES := ${HOME}/.dotfiles/files
+FILES    := .aliasesrc .vimrc .zshrc .ssh .vim .oh-my-zsh .screenrc
 
 server:: basic
 chromebook:: basic
@@ -16,8 +16,8 @@ core::
 	@echo Core libraries are installed.
 
 configure::
+	@$(foreach i,$(FILES),ln -s $(DOTFILES)/$i ${HOME}/$i;)
 	@echo All dotfiles symlinked
-    @$(foreach i,$(FILES),ln -s DOTFILES/$i ${HOME}/$i;)
 
 clean::
 	@$(foreach i,$(FILES),rm -f ${HOME}/$i;)
