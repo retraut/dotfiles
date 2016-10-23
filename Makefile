@@ -1,14 +1,9 @@
 DOTFILES := ${HOME}/.dotfiles/files
 FILES    := .aliasesrc .vimrc .zshrc .ssh .vim .oh-my-zsh .screenrc .gitconfig
 
-
 server:: basic
 chromebook:: basic
 basic:: core configure update-submodules
-
-help::
-	@echo "make server           #=> Creates and configures dotfiles for general server"
-	@echo "make help             #=> Displays this help"
 
 
 update-submodules::
@@ -22,8 +17,8 @@ core::
 
 configure::
 	@$(foreach i,$(FILES),ln -s $(DOTFILES)/$i ${HOME}/$i;)
-	@echo 'All dotfiles symlinked'
+	@echo All dotfiles symlinked
 
 clean::
 	@$(foreach i,$(FILES),rm -f ${HOME}/$i;)
-	@echo 'Remove dot files in your home directory...'
+
