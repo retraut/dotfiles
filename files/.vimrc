@@ -48,19 +48,15 @@ nmap <F3> :GundoToggle<CR>
 """"Vundle"""""
 """""""""""""""
 "set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
-call vundle#begin('~/.vim/bundle')
+" call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'pearofducks/ansible-vim'
-Plugin 'tpope/vim-fugitive'
+
 Plugin 'itchyny/lightline.vim'
-Plugin 'sjl/gundo.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'MicahElliott/Rocannon'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
