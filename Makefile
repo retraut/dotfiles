@@ -1,10 +1,5 @@
 DOTFILES := ${HOME}/.dotfiles/files
-#FILES    := .aliasesrc .vimrc .zshrc .ssh .vim .oh-my-zsh .screenrc .gitconfig
-
-CANDIDATES := $(wildcard .??*) bin
-EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml
-FILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
-
+FILES    := .aliasesrc .vimrc .zshrc .ssh .vim .oh-my-zsh .screenrc .gitconfig
 
 
 server:: basic
