@@ -1,0 +1,5 @@
+*.swp
+files/.vim/bundle/*
+files/.ssh/known_hosts
+
+
