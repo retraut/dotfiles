@@ -1,6 +1,6 @@
 [user]
         name = retraut
-        email = retrait@gmail.com
+        email = retraut@gmail.com
 [core]
         editor = vim
         excludesfile = ~/.gitignore
