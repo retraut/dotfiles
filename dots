@@ -1,16 +1,9 @@
 #!/bin/bash
 
 GIT="${HOME}/.dotfiles"
+DOTFILES=$GIT/files
 CONF="${HOME}"
-FILES=(
- ".aliasesrc"
- ".vimrc"
- ".zshrc"
- ".ssh"
- ".vim"
- ".oh-my-zsh"
- ".screenrc"
-)
+FILES=$(cd $DOTFILES && find . -maxdepth 1 -name '.?*'| cut -c 3-)
 
 function install {
 for i in "${FILES[@]}"; do
@@ -22,14 +15,14 @@ done
 }
 
 function gitsubmodule {
-cd ~/.dotfiles
+cd $GIT
 git submodule init
 git submodule update
 }
 
 # Need to do in ansible module for centos and ubuntu ( debian ) servers
 function needed_package {
-sudo apt-get install python-pip zsh vim git curl wget  
+sudo apt-get install python-pip zsh vim curl wget  
 }
 
 
