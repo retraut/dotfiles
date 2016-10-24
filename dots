@@ -3,12 +3,12 @@
 GIT="${HOME}/.dotfiles"
 DOTFILES=$GIT/files
 CONF="${HOME}"
-FILES=$(cd $DOTFILES && find . -maxdepth 1 -name '.?*'| cut -c 3-)
+FILES=( $(cd $DOTFILES && find . -maxdepth 1 -name '.?*'| cut -c 3-) )
 
 function install {
 for i in "${FILES[@]}"; do
     rm -rf ${HOME}/$i
-    if ln -s $GIT/files/$i ${HOME}/$i ; then
+    if ln -s $DOTFILES/$i ${HOME}/$i ; then
       echo Link to ${HOME}/$i created!; else     
         echo 0; fi
 done
