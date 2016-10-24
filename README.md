@@ -4,13 +4,13 @@ General dotfiles for my server
 ### Features ###
 * Installs or updates you doftiles configuration 
 * language - bash
-* version - 1.1b
+* version - 1.2b
 
 ### How do I get set up? ###
 * Clone repo with 
 
 ```
-git clone git@bitbucket.org:Retraut/dotfiles.git ~/.dotfiles
+git clone https://github.com/retraut/dotfiles.git ~/.dotfiles
 ```
 
 * Run **~/.dotfiles/dots install**
