@@ -36,7 +36,7 @@ nnoremap <C-t>     :tabnew<CR>
 
 
 " Paste mod on
-set paste
+"set paste
 
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.pyc,*.gitignore,*.db        " Linux/MacOSX
 

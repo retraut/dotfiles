@@ -32,12 +32,18 @@ git -C $GIT commit
 git -C $GIT push
 }
 
+case "$1" in
+	install)
+        install
+	    gitsubmodule
+	    needed_package
+          ;;
 
-if [ $1 == update ] ||[ $1 == "-u" ]; then
-    update
-    exit 0
-elif [ $1 == install ] || [ $1 == "-i" ]; then
-    install
-    gitsubmodule
-    needed_package
-fi
+    update)
+        update
+          ;;
+    *)
+        echo $"Usage: $0 {install|update|clean|help|status}"
+        exit 1
+      
+esac
