@@ -15,29 +15,36 @@ done
 }
 
 function gitsubmodule {
-cd $GIT
-git submodule init
-git submodule update
+	cd $GIT
+	git submodule init
+	git submodule update
 }
 
 # Need to do in ansible module for centos and ubuntu ( debian ) servers
 function needed_package {
-sudo apt-get install python-pip zsh vim curl wget  
+	sudo apt-get install python-pip zsh vim curl wget  
 }
 
 
 function update {
-git -C $GIT add .
-git -C $GIT commit
-git -C $GIT push
+	git -C $GIT add .
+	git -C $GIT commit
+	git -C $GIT push
 }
 
+case "$1" in
 
-if [ $1 == update ] ||[ $1 == "-u" ]; then
-    update
-    exit 0
-elif [ $1 == install ] || [ $1 == "-i" ]; then
-    install
-    gitsubmodule
-    needed_package
-fi
+	install)
+		install
+		gitsubmodule
+		needed_package
+	;;
+
+	update)
+		update
+	;;
+	*)
+	echo $"Usage: $0 {install|update|clean|help|status}"
+	exit 1
+      
+esac
