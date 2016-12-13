@@ -9,5 +9,5 @@ General dotfiles for my server
 * Clone repo with 
 
 ```
-git clone https://github.com/retraut/dotfiles.git ~/.dotfiles && ~/.dotfiles/dots install
+git clone https://github.com/retraut/dotfiles.git ~/.dotfiles && ~/.dotfiles/dots install && chsh
 ```
