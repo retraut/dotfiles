@@ -6,7 +6,6 @@ General dotfiles for my server
 * language - bash
 
 ### How do I get set up? ###
-* Clone repo with 
 
 ```
 git clone https://github.com/retraut/dotfiles.git ~/.dotfiles && ~/.dotfiles/dots install && chsh
