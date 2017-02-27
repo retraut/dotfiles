@@ -40,9 +40,13 @@ nnoremap <C-t>     :tabnew<CR>
 
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.pyc,*.gitignore,*.db        " Linux/MacOSX
 
-"Plugin Settings
-"Gundo
-nmap <F3> :GundoToggle<CR>
+" Disable arrows for navigation
+map <Left> <Nop>
+map <Right> <Nop>
+map <Up> <Nop>
+map <Down> <Nop>
+
+
 
 """""""""""""""
 """"Vundle"""""
@@ -55,7 +59,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
 Plugin 'itchyny/lightline.vim'
 
 " The following are examples of different formats supported.
