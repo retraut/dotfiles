@@ -9,10 +9,20 @@ function install {
 for i in "${FILES[@]}"; do
     rm -rf ${HOME}/$i
     if ln -s $DOTFILES/$i ${HOME}/$i ; then
-      echo Link to ${HOME}/$i created!; else     
-        echo 0; fi
+      echo Link to ${HOME}/$i created!
+    fi
 done
 }
+
+function getOS {
+   if [ -f /etc/centos-release ]; then 
+      ID=centos
+	  return
+   else
+	 source /etc/os-release
+   fi
+}
+
 
 function gitsubmodule {
 	cd $GIT
@@ -22,7 +32,13 @@ function gitsubmodule {
 
 # Need to do in ansible module for centos and ubuntu ( debian ) servers
 function needed_package {
-	sudo apt-get install python-pip zsh vim curl wget  
+	getOS
+	if [ $ID == centos ]; then
+	    sudo yum install python-pip zsh vim curl wget git -y
+    else
+		sudo apt-get -y update && sudo apt-get -y upgrade
+	    sudo apt-get -y install python-pip zsh vim curl wget git
+	fi
 }
 
 
@@ -36,8 +52,8 @@ case "$1" in
 
 	install)
 		install
-		gitsubmodule
 		needed_package
+		gitsubmodule
 	;;
 
 	update)

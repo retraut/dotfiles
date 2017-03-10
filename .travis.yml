@@ -25,10 +25,6 @@ before_install:
 script:
   - container_id=$(mktemp)
   # Run container in detached state.
-  - 'docker run --detach --volume="${PWD}":/root/.doftiles:ro ${run_opts} geerlingguy/docker-${distro}-ansible:latest "${init}" > "${container_id}"'
-  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ls'
-  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ls /root'
-
-  # Run dots install 
+  - 'docker run --detach --volume="${PWD}":/root/.dotfiles:ro ${run_opts} geerlingguy/docker-${distro}-ansible:latest "${init}" > "${container_id}"'
+  # Run dots install
   - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm /root/.dotfiles/dots install'
-
