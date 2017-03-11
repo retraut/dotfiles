@@ -5,7 +5,8 @@ DOTFILES=$GIT/files
 CONF="${HOME}"
 FILES=( $(cd $DOTFILES && find . -maxdepth 1 -name '.?*'| cut -c 3-) )
 
-function install {
+function installSymlinks {
+
 for i in "${FILES[@]}"; do
     rm -rf ${HOME}/$i
     if ln -s $DOTFILES/$i ${HOME}/$i ; then
@@ -14,7 +15,8 @@ for i in "${FILES[@]}"; do
 done
 }
 
-function getOS {
+function getOStype {
+
    if [ -f /etc/centos-release ]; then 
       ID=centos
 	  return
@@ -24,14 +26,16 @@ function getOS {
 }
 
 
-function gitsubmodule {
+function gitsubmoduleUpdate {
+
 	cd $GIT
 	git submodule init
 	git submodule update
 }
 
 # Need to do in ansible module for centos and ubuntu ( debian ) servers
-function needed_package {
+function installPackages {
+
 	getOS
 	if [ $ID == centos ]; then
 	    sudo yum install python-pip zsh vim curl wget git -y
@@ -42,25 +46,19 @@ function needed_package {
 }
 
 
-function update {
-	git -C $GIT add .
-	git -C $GIT commit
-	git -C $GIT push
-}
+function install {
 
+	installSymlinks
+	installPackages
+	gitsubmoduleUpdate
+}
 case "$1" in
 
 	install)
 		install
-		needed_package
-		gitsubmodule
-	;;
-
-	update)
-		update
 	;;
 	*)
-	echo $"Usage: $0 {install|update|clean|help|status}"
+	echo $"Usage: $0 {install|clean|help|status}"
 	exit 1
       
 esac
