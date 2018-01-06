@@ -3,9 +3,16 @@ hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{= Kb} %{= Kb} %{-} %-Lw%{= bW}%n%f %t%{-}%+Lw "
 defscrollback 100000
-# for ctrl right and left arrows
-# Arrow keys to switch terminals (only works with X) 
-# Alt + left 
-# bindkey ^[[1;3D prev 
-# Alt + right 
-# bindkey ^[[1;3C next 
+# for shift UP and DOWN arrows
+bindkey ^[[1;5A prev
+bindkey ^[[1;5B next
+#
+# # for ctrl right and left arrows
+# bindkey ^[[1;5D prev
+# bindkey ^[[1;5C next
+#
+#
+#  # for shift right and left arrows
+#  bindkey ^[[1;2D prev
+#  bindkey ^[[1;2C next
+#
