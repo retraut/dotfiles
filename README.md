@@ -1,3 +1,5 @@
+[![Travis](https://img.shields.io/travis/retraut/dotfiles.svg?style=flat-square)](https://travis-ci.org/retraut/dotfiles)
+
 ### What is this repository for? ###
 General dotfiles for my server
 
