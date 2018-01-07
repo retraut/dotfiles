@@ -34,3 +34,7 @@ alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 alias wget='noglob wget'
 alias curl='noglob curl'
 
+#docker-compose
+alias dc='docker-compose'
+alias dcp='docker-compose pull'
+alias dcup='docker-compose up -d'
