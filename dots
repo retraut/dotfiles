@@ -37,7 +37,7 @@ function gitsubmoduleUpdate {
 # Need to do in ansible module for centos and ubuntu ( debian ) servers
 function installPackages {
 
-	getOS
+	getOStype
 	if [ ${ID} = centos ]; then
 	    sudo yum install python-pip zsh vim curl wget git -y
         else
