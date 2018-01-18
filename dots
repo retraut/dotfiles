@@ -22,6 +22,7 @@ function getOStype {
 	  return
    else
 	 source /etc/os-release
+      ID=ubuntu
    fi
 }
 
@@ -37,10 +38,10 @@ function gitsubmoduleUpdate {
 function installPackages {
 
 	getOS
-	if [ $ID == centos ]; then
+	if [ ${ID} = centos ]; then
 	    sudo yum install python-pip zsh vim curl wget git -y
-    else
-		sudo apt-get -y update && sudo apt-get -y upgrade
+        else
+	    sudo apt-get -y update && sudo apt-get -y upgrade
 	    sudo apt-get -y install python-pip zsh vim curl wget git
 	fi
 }
