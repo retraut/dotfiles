@@ -33,6 +33,11 @@ function gitsubmoduleUpdate() {
 	git submodule update
 }
 
+function installVimPackages() {
+
+	vim +PluginInstall +qall
+}
+
 # Need to do in ansible module for centos and ubuntu ( debian ) servers
 function installPackages() {
 
@@ -50,6 +55,7 @@ function install() {
 	installSymlinks
 	installPackages
 	gitsubmoduleUpdate
+	installVimPackages
 }
 case "$1" in
 
