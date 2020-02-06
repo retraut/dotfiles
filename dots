@@ -19,8 +19,8 @@ function installSymlinks() {
 		if ln -s $FILES/$i ${HOME}/.$i; then
 			echo Link to ${HOME}/$i created!
 		fi
-    echo "installSymlinks is done"
 	done
+    echo "installSymlinks is done"
 }
 
 function gitsubmoduleUpdate() {
