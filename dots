@@ -3,7 +3,6 @@ set -e
 
 DOTFILES="${HOME}/.dotfiles"
 FILES=$GIT/files
-LINKS=($(cd $DOTFILES && find . -maxdepth 1 -name '.?*' | cut -c 3-))
 GIT_REPO_URL="git@github.com:retraut/dotfiles.git"
 
 function cloneGitRepo() {
@@ -14,6 +13,7 @@ function cloneGitRepo() {
 
 function installSymlinks() {
 
+    local LINKS=($(cd $DOTFILES && find . -maxdepth 1 -name '.?*' | cut -c 3-))
 	for i in "${LINKS[@]}"; do
 		rm -rf ${HOME}/$i
 		if ln -s $FILES/$i ${HOME}/$i; then
