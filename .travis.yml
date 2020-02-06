@@ -5,4 +5,4 @@ before_install:
   - ls
   - uname -a
 script:
-  - ./dots --install
+  - ./dots install
