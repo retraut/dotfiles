@@ -15,16 +15,17 @@ function installSymlinks() {
 
     local LINKS=($(find $FILES -maxdepth 1 | awk -F "." '{print $3}'))
 	for i in "${LINKS[@]}"; do
-		rm -rf ${HOME}/$i
-		if ln -s $FILES/$i ${HOME}/$i; then
+		rm -rf ${HOME}/.$i
+		if ln -s $FILES/$i ${HOME}/.$i; then
 			echo Link to ${HOME}/$i created!
 		fi
+    echo "installSymlinks is done"
 	done
 }
 
 function gitsubmoduleUpdate() {
 
-	cd $GIT
+	cd $DOTFILES
 	git submodule init
 	git submodule update
 }
