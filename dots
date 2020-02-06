@@ -1,29 +1,23 @@
 #!/bin/bash
 
-GIT="${HOME}/.dotfiles"
-DOTFILES=$GIT/files
-CONF="${HOME}"
-FILES=($(cd $DOTFILES && find . -maxdepth 1 -name '.?*' | cut -c 3-))
+DOTFILES="${HOME}/.dotfiles"
+FILES=$GIT/files
+LINKS=($(cd $DOTFILES && find . -maxdepth 1 -name '.?*' | cut -c 3-))
+GIT_REPO_URL="git@github.com:retraut/dotfiles.git"
+
+function clone_git_repo() {
+
+    git clone $GIT_REPO_URL $DOTFILES
+}
 
 function installSymlinks() {
 
-	for i in "${FILES[@]}"; do
+	for i in "${LINKS[@]}"; do
 		rm -rf ${HOME}/$i
-		if ln -s $DOTFILES/$i ${HOME}/$i; then
+		if ln -s $FILES/$i ${HOME}/$i; then
 			echo Link to ${HOME}/$i created!
 		fi
 	done
-}
-
-function getOStype() {
-
-	if [ -f /etc/centos-release ]; then
-		ID=centos
-		return
-	else
-		source /etc/os-release
-		ID=ubuntu
-	fi
 }
 
 function gitsubmoduleUpdate() {
@@ -36,18 +30,6 @@ function gitsubmoduleUpdate() {
 function installVimPackages() {
 
 	vim +PluginInstall +qall
-}
-
-# Need to do in ansible module for centos and ubuntu ( debian ) servers
-function installPackages() {
-
-	getOStype
-	if [ ${ID} = centos ]; then
-		sudo yum install python-pip zsh vim curl wget git -y
-	else
-		sudo apt-get -y update && sudo apt-get -y upgrade
-		sudo apt-get -y install python-pip zsh vim curl wget git
-	fi
 }
 
 function install() {
